@@ -1,5 +1,5 @@
 #
-
+#' @export
 lump = function(betas, sample_in_row = "Y"){
   #betas: matrix/data.frame if 
   #columns as probe IDs and row as samples: sample_in_row = Y
