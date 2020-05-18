@@ -1,0 +1,30 @@
+---
+title: "introduction"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(LUMP)
+
+library(minfi)
+library(minfiData)
+baseDir <- system.file("extdata", package="minfiData")
+targets <- read.metharray.sheet(baseDir)
+RGset <- read.metharray.exp(targets = targets)
+#Mset <- preprocessRaw(RGset)
+Mset = preprocessQuantile(RGset)
+beta = getBeta(Mset)
+
+lump(beta, "N")
+```
